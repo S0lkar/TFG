@@ -1,12 +1,13 @@
 
-% Dados un TSP y un camino mínimo vacío (es decir, solo con sus puntos de
-% Entrada y Salida), devuelve el camino mínimo que pasa por todos los
-% puntos del TSP.
+% Dados el TSP (Solucion y su envolvente convexa EC) y los puntos
+% exteriores (EC_pos), une el TSP a uno de los segmentos, manteniendo la
+% propiedad de ser un camino minimo.
 
-function [outputArg1,outputArg2] = Union_TSP_CM(inputArg1,inputArg2)
-%UNION_TSP_CM Summary of this function goes here
-%   Detailed explanation goes here
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+% Al final CM tendrá tanto los puntos del TSP como de la capa siguiente.
+% E y S son los puntos de entrada y salida de donde se colocaron los puntos
+% interiores.
+function [CM, E, S] = Union_TSP_CM(Coordenadas, Solucion, EC, EC_pos, Segmento_Ignorado)
+    CM = Solucion + EC + EC_pos - Segmento_Ignorado;
+    E=1;S=2;
 end
 
