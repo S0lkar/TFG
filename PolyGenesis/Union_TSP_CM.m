@@ -6,8 +6,12 @@
 % Al final CM tendrá tanto los puntos del TSP como de la capa siguiente.
 % E y S son los puntos de entrada y salida de donde se colocaron los puntos
 % interiores.
-function [CM, E, S] = Union_TSP_CM(Coordenadas, Solucion, EC, EC_pos, Segmento_Ignorado)
-    CM = Solucion + EC + EC_pos - Segmento_Ignorado;
-    E=1;S=2;
+
+% Le tengo que hacer los circshifts necesarios como para que el punto de
+% entrada al segmento con todos los intermedios esté al inicio del vector.
+% Así me simplifica todo el proceso posterior.
+
+function Solucion = Union_TSP_CM(Coordenadas, Solucion, EC, EC_pos, Segmento_Ignorado)
+   Solucion = Solucion + EC + EC_pos - Segmento_Ignorado;
 end
 
