@@ -3,7 +3,7 @@
 % Coordenadas del punto, Coordenadas del conjunto, Indices del conjunto
 % 'es_ciclico' determina si consideramos que es un vector circular o no.
 
-function [Ia, Ib, Gmin] = MinimaGanancia(C_punto, C_Conj, I_Conj, es_ciclico)
+function [Ia, Ib, Gmin] = MinimaGanancia(C_punto, C_Conj, I_Conj, es_ciclico, Segmento_ignorado)
 
     N = length(I_Conj);
     if es_ciclico
@@ -23,6 +23,18 @@ function [Ia, Ib, Gmin] = MinimaGanancia(C_punto, C_Conj, I_Conj, es_ciclico)
     else
         Ia = I_Conj(pos);
         Ib = I_Conj(pos+1);
+    end
+
+    if (Ia == Segmento_ignorado(1) && Ib == Segmento_ignorado(2)) || (Ia == Segmento_ignorado(2) && Ib == Segmento_ignorado(1))
+        aux(pos) = inf;
+        [Gmin, pos] = min(aux);
+        if pos == N
+            Ia = I_Conj(N);
+            Ib = I_Conj(1);
+        else
+            Ia = I_Conj(pos);
+            Ib = I_Conj(pos+1);
+        end
     end
 
 end

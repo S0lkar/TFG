@@ -1,6 +1,6 @@
 
-% Une los puntos individuales (PI) a las aristas del circuito (S).
-function I_S = Union(C_S, I_S, C_PI, I_PI)
+% Une los puntos interiores (PI) a las aristas del segmento (S).
+function I_S = Union(C_S, I_S, C_PI, I_PI, Segmento_ignorado)
 
     Ct = [C_PI C_S]; % todas las coordenadas
     It = [I_PI; I_S]; % todos los indices
@@ -9,7 +9,7 @@ function I_S = Union(C_S, I_S, C_PI, I_PI)
     % I_sig |  Ia  |  Ib   | Ganancia Minima
     L = zeros(length(I_PI), 4);
     for i = 1:length(I_PI)
-        [Ia, Ib, Gmin] = MinimaGanancia(C_PI(:, i), C_S, I_S, true);
+        [Ia, Ib, Gmin] = MinimaGanancia(C_PI(:, i), C_S, I_S, true, Segmento_ignorado);
         L(i, :) = [I_PI(i) Ia Ib Gmin];
     end
     if ~isempty(I_PI)
