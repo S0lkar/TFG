@@ -7,7 +7,7 @@ load Test_RdD.mat
 EC = convhulln(Test_RdD(:, 1:8)'); 
 EC = EC(:, 1)';
 
-[A, B] = Regla_de_Derivacion(Test_RdD, A, B, EC, P_ex);
+[A, B] = Regla_Derivacion(Test_RdD, A, B, EC, P_ex);
 
 DEBUG_verRuta(A, Test_RdD, false);
 DEBUG_verRuta(B, Test_RdD, false);
