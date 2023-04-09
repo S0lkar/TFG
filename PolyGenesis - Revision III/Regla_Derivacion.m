@@ -11,6 +11,7 @@
 % Primera llamada; set = Regla_Derivacion(Coords, A, B, Indices, Len, N, 2, []);
 
 function Set = Regla_Derivacion(Coords, A, B, Indices, Len, N, i, set_ant)
+%Debe devolver todos los sets viables.
     Set = BuscarViabilidad(Coords, A, B, Indices, Len, i, set_ant);
 
     if(length(Set) == length(set_ant)) % No hay ningún set en la capa actual que sea viable trasladar
@@ -18,11 +19,10 @@ function Set = Regla_Derivacion(Coords, A, B, Indices, Len, N, i, set_ant)
         % (devolviendo un segundo parámetro con los 'puntos actualizados'
         % con todos los de esta EC)
     else
-        if(i+1 <= N)
-            Set = Regla_Derivacion(Coords, A, B, Indices, Len, N, i+1, Set);
-        else
-            %Poner trigger a todos los puntos de la EC anterior
-        end
+        % Debo de seguir con el set mas grande. Si el comprobante da que ya
+        % no es viable ('es viable' con todos los puntos), debo de pasar al
+        % siguiente set mas grande.
+        Set = Regla_Derivacion(Coords, A, B, Indices, Len, N, i+1, Set);
         Set = Comprobante(Coords, A, B, Indices, Len, N, Set, i);
     end
 

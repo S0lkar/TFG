@@ -6,6 +6,9 @@
 % Ignora puntos de capas más interiores.
 
 function Set = BuscarViabilidad(Coords, dist_or, A, B, Indices, Len, I, Set)
+    % Tengo que recalcular la distancia original...no es lo mismo ignorando
+    % 4 puntos que 50...
+
     % Quitamos los puntos de A que sean de capas posteriores a la actual
     aux = A([1 end]); % los puntos de E/S
     inds = [];
