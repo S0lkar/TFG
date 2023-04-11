@@ -23,7 +23,6 @@ function TSP = Caso_General(Coordenadas, Segmento_Ignorado, Indices, Len, N)
     TSP = PolyGenesis(Coordenadas(:, PI), [1 length(PI)]);
 
     % "traducimos" la solución interior en los índices de la actual
-
     TSP = PI(Convertir_TSP_a_CM(TSP, 1, length(PI)));
     TSP = [TSP'; EC_pos(3:end)];
 

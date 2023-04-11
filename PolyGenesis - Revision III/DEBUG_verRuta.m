@@ -17,9 +17,9 @@ function DEBUG_verRuta(ruta, C, pausar)
     end
 
     for i = 1:length(ruta)-1
-        plot([C(ruta(i), 1) C(ruta(i+1), 1)], [C(ruta(i), 2) C(ruta(i+1), 2)], 'b');
+        %plot([C(ruta(i), 1) C(ruta(i+1), 1)], [C(ruta(i), 2) C(ruta(i+1), 2)], 'b');
     end
-        plot([C(ruta(end), 1) C(ruta(1), 1)], [C(ruta(end), 2) C(ruta(1), 2)], 'b');
+        %plot([C(ruta(end), 1) C(ruta(1), 1)], [C(ruta(end), 2) C(ruta(1), 2)], 'b');
 
     if(pausar)
         pause();

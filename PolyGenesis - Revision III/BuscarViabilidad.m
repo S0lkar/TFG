@@ -5,26 +5,25 @@
 % dos contiguos a los escogidos.
 % Ignora puntos de capas más interiores.
 
-function Set = BuscarViabilidad(Coords, dist_or, A, B, Indices, Len, I, Set)
-    % Tengo que recalcular la distancia original...no es lo mismo ignorando
-    % 4 puntos que 50...
+function Set = BuscarViabilidad(Coords, A, B, Indices, Len, I, Set)
 
-    % Quitamos los puntos de A que sean de capas posteriores a la actual
+    % Quitamos los puntos de A que sean de capas posteriores a la actual.
+    % Esto habrá que cambiarlo a literalmente QUITARLOS de A.
     aux = A([1 end]); % los puntos de E/S
     inds = [];
-    for i = 2:I % puntos interiores de las capas '1' hasta la I.
+    for i = 1:I % puntos interiores de las capas '1' hasta la I.
         inds = [inds Obtener_Capa(Indices, Len, i)]; %#ok<AGROW> 
     end
     A = [aux(1) A(inds) aux(2)];
     EC = Obtener_Capa(Indices, Len, I);
+    dist_or = CosteCM(A, Coords) + norm(B(:, 1) - B(:, 2)); % Distancia original = dist(A) + dist(B);
 
     % Obtener los sets de dependencia de cada punto de la capa actual
     % Si no es la primera capa tengo que mirar que sean puntos interiores
     % de un segmento escogido o contiguo a los mismos.
 
-    % La capa 1 es la mas exterior de todas, de donde estoy sacando las As
-    % y Bs. La 2 sería la inmediata interior.
-    if (I == 2)
+    % Revisar 'Envolvente Convexa de un Camino Mínimo'
+    if (I == 1)
         for i = 1:length(EC)
             % función para obtener el set de dependencia del punto EC(i) y
             % la longitud. tener un contador para la cantidad de puntos.

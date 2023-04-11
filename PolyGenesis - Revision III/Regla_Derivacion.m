@@ -8,7 +8,9 @@
 % i -> capa i-ésima sobre la que buscamos el set viable.
 % set_ant -> set anterior de puntos escogidos para su traslado de 'A' a 'B'.
 
+
 % Primera llamada; set = Regla_Derivacion(Coords, A, B, Indices, Len, N, 2, []);
+
 
 function Set = Regla_Derivacion(Coords, A, B, Indices, Len, N, i, set_ant)
 %Debe devolver todos los sets viables.
