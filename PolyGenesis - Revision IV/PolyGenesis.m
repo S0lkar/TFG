@@ -38,7 +38,7 @@ function TSP = PolyGenesis(Coordenadas, Segmento_Ignorado)
         end
 
         % Teorema de los Arcos Irregulares
-
+        [Indices, Len] = TAI(Coordenadas, Indices, Len); %#ok<ASGLU> 
 
         % Output
         TSP = Indices;

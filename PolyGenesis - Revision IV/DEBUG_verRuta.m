@@ -10,7 +10,7 @@ function DEBUG_verRuta(ruta, C, pausar, verCamino)
             C = C';
     end
 
-    title("Ruta"); hold on; axis equal;
+    title("Ruta, Coste:" + DEBUG_LightFcost(ruta, C')); hold on; axis equal;
 
     for i = 1:length(ruta)
         plot(C(ruta(i), 1), C(ruta(i), 2), '.b');
